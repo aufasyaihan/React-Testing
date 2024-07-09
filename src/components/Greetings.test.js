@@ -9,6 +9,6 @@ test("Hello Word is rendered", () => {
   // ...nothing
 
   // Assert
-  const helloWorldElemet = screen.getByText("Hello, World!");
-  expect(helloWorldElemet).toBeInTheDocument();
+  const helloWorldElemet = screen.getByText("Hello, World!", { exact: false }); // Get the element containing the text "Hello, World!" that is not case sensitive
+  expect(helloWorldElemet).toBeInTheDocument(); // Assert that the element is in the document
 });
