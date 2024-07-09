@@ -8,7 +8,8 @@ const Greetings = () => {
   return (
     <div>
       <h1>Hello, World!</h1>
-      {changeText ? <p>Changed!</p> : <p>Not Changed!</p>}
+      <p>it's good to see you</p>
+      {changeText && <p>Changed!</p>}
       <button onClick={changeTextHandler}>Change Text</button>
     </div>
   );

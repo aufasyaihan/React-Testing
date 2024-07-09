@@ -17,7 +17,7 @@ describe("Greetings", () => {
     expect(helloWorldElemet).toBeInTheDocument(); // Assert that the element is in the document
   });
 
-  test("Not Changed! is rendered", () => {
+  test("good to see you is rendered", () => {
     // Arrange
     render(<Greetings />);
 
@@ -25,7 +25,7 @@ describe("Greetings", () => {
     // ...nothing
 
     // Assert
-    const outputElement = screen.getByText("Not Changed!");
+    const outputElement = screen.getByText("good to see you", { exact: false });
     expect(outputElement).toBeInTheDocument();
   });
 
@@ -40,5 +40,20 @@ describe("Greetings", () => {
     // Assert
     const changedElement = screen.getByText("Changed!");
     expect(changedElement).toBeInTheDocument();
+  });
+
+  test("good to see you is not rendered if the button was clicked", () => {
+    // Arrange
+    render(<Greetings />);
+
+    // Act
+    const buttonElement = screen.getByRole("button");
+    userEvent.click(buttonElement); // Simulate a click event on the button
+
+    // Assert
+    const outputElement = screen.queryByText("good to see you", {
+      exact: false,
+    });
+    expect(outputElement).toBeNull(); // Assert that the element is not in the document
   });
 });
